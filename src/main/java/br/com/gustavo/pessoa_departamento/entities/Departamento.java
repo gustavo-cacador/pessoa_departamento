@@ -2,6 +2,8 @@ package br.com.gustavo.pessoa_departamento.entities;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -13,6 +15,9 @@ public class Departamento {
     private Long id;
 
     private String nome;
+
+    @OneToMany(mappedBy = "departamento")
+    private List<Pessoa> pessoas = new ArrayList<>();
 
     public Departamento() {
     }
@@ -48,5 +53,13 @@ public class Departamento {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public List<Pessoa> getPessoas() {
+        return pessoas;
+    }
+
+    public void setPessoas(List<Pessoa> pessoas) {
+        this.pessoas = pessoas;
     }
 }

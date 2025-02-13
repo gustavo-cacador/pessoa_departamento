@@ -15,6 +15,10 @@ public class Pessoa {
     private String nome;
     private Double salario;
 
+    @ManyToOne
+    @JoinColumn(name = "departamento_id")
+    private Departamento departamento;
+
     public Pessoa() {
     }
 
@@ -58,5 +62,13 @@ public class Pessoa {
 
     public void setSalario(Double salario) {
         this.salario = salario;
+    }
+
+    public Departamento getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(Departamento departamento) {
+        this.departamento = departamento;
     }
 }
