@@ -1,5 +1,6 @@
 package br.com.gustavo.pessoa_departamento.controllers;
 
+import br.com.gustavo.pessoa_departamento.dto.PessoaDTO;
 import br.com.gustavo.pessoa_departamento.dto.PessoaDepartamentoDTO;
 import br.com.gustavo.pessoa_departamento.services.PessoaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +20,18 @@ public class PessoaController {
     @Autowired
     private PessoaService pessoaService;
 
+    /*
     @PostMapping
     public ResponseEntity<PessoaDepartamentoDTO> insert(@RequestBody PessoaDepartamentoDTO dto) {
+        dto = pessoaService.insert(dto);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+                .buildAndExpand(dto.getId()).toUri();
+        return ResponseEntity.created(uri).body(dto);
+    }
+     */
+
+    @PostMapping
+    public ResponseEntity<PessoaDTO> insert(@RequestBody PessoaDTO dto) {
         dto = pessoaService.insert(dto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(dto.getId()).toUri();
